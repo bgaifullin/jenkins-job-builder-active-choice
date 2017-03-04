@@ -9,7 +9,7 @@ setup(
     author_email='gaifullinbf@gmail.com',
     license='MIT license',
     setup_requires=['pytest-runner'],
-    tests_require=['pytest', 'jenkins-job-builder<2.0.0'],
+    tests_require=['pytest>=3.0.0', 'jenkins-job-builder<2.0.0'],
     entry_points={
         'jenkins_jobs.parameters': [
             'active-choice = jenkins_jobs_active_choice.active_choice:active_choice_parameter']},

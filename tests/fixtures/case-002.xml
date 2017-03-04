@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+  <actions/>
+  <description>&lt;!-- Managed by Jenkins Job Builder --&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <concurrentBuild>false</concurrentBuild>
+  <canRoam>true</canRoam>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <org.biouno.unochoice.CascadeChoiceParameter>
+          <script class="org.biouno.unochoice.model.GroovyScript">
+            <script>return ['foo', 'bar']
+</script>
+            <fallbackScript/>
+          </script>
+          <name>ACTIVE_CHOICE</name>
+          <projectName>active-choice-example-02</projectName>
+          <description/>
+          <visibleItemCount>1</visibleItemCount>
+          <referencedParameters/>
+          <choiceType>single</choiceType>
+          <filterable>false</filterable>
+          <randomName>param-name-active-choice-example-02-active_choice</randomName>
+        </org.biouno.unochoice.CascadeChoiceParameter>
+        <parameters class="linked-hash-map"/>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
+</project>

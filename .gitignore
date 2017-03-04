@@ -1,0 +1,12 @@
+.*
+!.editorconfig
+!.travis*
+!.git*
+
+# Python
+/dist
+/build
+*.pyc
+*.pyo
+*.egg*
+*.so

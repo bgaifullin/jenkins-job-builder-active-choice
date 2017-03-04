@@ -1,0 +1,18 @@
+- job:
+    name: 'active-choice-example-03'
+
+    parameters:
+      - string:
+          name: STR_PARAM
+          default: test
+      - active-choice:
+          name: ACTIVE_CHOICE
+          project: 'active-choice-example-03'
+          script: |
+            return ['foo', 'bar']
+          description: "A parameter named ACTIVE_CHOICE which options foo and bar."
+          visible-item-count: 2
+          fallback-script: |
+            return ['Something Wrong']
+          reference: STR_PARAM
+          choice-type: checkbox

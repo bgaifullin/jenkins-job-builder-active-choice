@@ -2,6 +2,9 @@ sudo: false
 language: python
 python:
 - '2.7'
+install:
+  - travis_retry pip install
+before_script: pep8 --max-line-length=120
 script: python setup.py test --addopts '-vv'
 deploy:
   provider: pypi

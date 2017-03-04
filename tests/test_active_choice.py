@@ -13,7 +13,6 @@
 
 import glob
 import os
-from xml.dom import minidom
 
 from jenkins_jobs import parser
 
@@ -29,9 +28,11 @@ class Scenario(object):
 
 def get_scenarios():
     fixtures_path = os.path.join(os.path.dirname(__file__), 'fixtures')
+    scenarios = []
     for path in glob.iglob(os.path.join(fixtures_path, "*.yaml")):
             wo_ext = os.path.splitext(path)[0]
-            yield Scenario(os.path.basename(wo_ext), path, wo_ext + ".xml")
+            scenarios.append(Scenario(os.path.basename(wo_ext), path, wo_ext + ".xml"))
+    return scenarios
 
 
 def generate_xml(fn):
@@ -47,7 +48,10 @@ def load_xml(fn):
         return stream.read().encode("utf-8")
 
 
-@pytest.mark.parametrize("scenario", get_scenarios(), ids=lambda x: x.name)
+scenarios = get_scenarios()
+
+
+@pytest.mark.parametrize("scenario", scenarios, ids=[x.name for x in scenarios])
 def test_scenario(scenario):
     actual = generate_xml(scenario.test_input)
     expected = load_xml(scenario.expected)

@@ -3,16 +3,16 @@ language: python
 python:
 - '2.7'
 before_install:
-  - sed -i "s/0.0.1/${TRAVIS_TAG:-0.0.1}/" setup.py
+- sed -i "s/0.0.1/${TRAVIS_TAG:-0.0.1}/" setup.py
 install:
-  - travis_retry pip install pep8
+- travis_retry pip install pep8
 before_script: pep8 --max-line-length=120
 script: python setup.py test --addopts '-vv'
 deploy:
   provider: pypi
   user: bgaifullin
   password:
-    secure: V7KMY7sTMk1zIEfJ4j9UiGWqwYRZHfeZ6qPt7lfRLF8QOE244/17/wYJRZhejk53YvRUMTK4Xh6tSOiwH9QRoI5vgcX5JJ5AQgI8xscidIDnxn9f/LOslp2LFLz+xM8XPmnqILclekA3T1RictbdKDuMFMY+MWgTSJu0QTOeUBM+LtbhqZKMr29T33EsVBdCjB77lw/2BqVlbo4TV9hxohbXth4OUd5wZdEMsDvrvySC1FUR4V/jzkcNrtxMnLjiDhvcapCfGwkEldCAI/liYulDQP3A3LZ7oeP04LvAO1XxL1Pq4VbnpENXYvtRL4mCIW8s8tDwYSsHi7633b6UIFVyjGegDboZCUDL1T86C54Sw8nLFSkNCBMXQOWDb1Sjilr80TYscaNXZl5BOI1XiOdtHRCwRkdpYr+UsfK3qgv8nsM+bCxTN4rDa/IfbcSWyM8OyLHbRQrXATgjXPwTCiURZVjsNEllUdSP0QH1jqrpapofbQV5nFVxohoF4UZVqJVYT6fljyyLPpjOgXWFU64m5L++y3hzYD1qeaCcm7TwhuF2k0IxT1j0Ze61MzufULHJ8BonGjBrgZG59Xk5JXKJWb+W+5DoodUK12hprBItH7EH7Ku3DE5QG+RHr18ivloMnApWggqBxdKb6bg6mXT0SekZbXmyTG7arEga4TA=
+    secure: i5GE6OmD46PYoE9nK0LEELVeHyFZbFfkwMthYErNjOy80ClX4fWRAcMLgjBt/AmDJKAIZyONCWSZduBCzNm0GimyDTM4gowxCR76QXYfwKAOF99fsF8MRM9k+QqJkDdGYUmLpiEvEHgMHxUN8hl+uZkuG72aMAAfcbuyt8PCmAaHjZ/k7olk6Of6QJwiIIBXDIb/hpmuS0tgqvVw5srUWPYNiev8mAz3gq0sbQCF5RtCjCqM8jQ0BiqzNBrTgBv75wLUimRTY1bYX4gGB1sXVO9nMlHsJJN7yk475o5CzPWtuinNWGzjX66topfO5yAvVC5vywtkRsbe2Y1/cpXQzFC6lnenddflvBXYB7mNvPxaPBFi4s/3m182ro75IRMaQTDdrfX1UxHk+DYx0+7Sg4kvHUOjtFUVcQB8N9cTYkgJK3744+38vSgNjbO6fbDAxswt3aOynI31OmawUy38gu7lVnefi++j0cXEdS4QXgX07EGwSh5qI5nR14mU/E012CG02y9fNnzkNtI2fEJye5fYAG9VzTyRyIloOYsa1hXRn2gX+FZdg7pMCxDWa0FAMt2UtCvA8pnE07ZIxgXIVJBMA/FuBv0zJafCyNm/UoCksxbgAeQsIKhHK5eHZFhMd1jL/iBxhJ/zRCta2zzinAcamiDQdlKzIwDrggMJry0=
   on:
     tags: true
     distributions: sdist bdist_wheel

@@ -27,8 +27,8 @@
           <description>A parameter named ACTIVE_CHOICE which options foo and bar.</description>
           <visibleItemCount>2</visibleItemCount>
           <referencedParameters>STR_PARAM</referencedParameters>
-          <choiceType>checkbox</choiceType>
           <filterable>false</filterable>
+          <choiceType>PT_CHECKBOX</choiceType>
           <randomName>param-name-active-choice-example-03-active_choice</randomName>
         </org.biouno.unochoice.CascadeChoiceParameter>
         <parameters class="linked-hash-map"/>

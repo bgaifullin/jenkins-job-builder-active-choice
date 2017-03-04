@@ -21,8 +21,8 @@
           <description/>
           <visibleItemCount>1</visibleItemCount>
           <referencedParameters/>
-          <choiceType>single</choiceType>
           <filterable>false</filterable>
+          <choiceType>PT_SINGLE_SELECT</choiceType>
           <randomName>param-name-active-choice-example-02-active_choice</randomName>
         </org.biouno.unochoice.CascadeChoiceParameter>
         <parameters class="linked-hash-map"/>

@@ -34,7 +34,6 @@ OPTIONAL = [
     ('visible-item-count', 'visibleItemCount', 1, ''),
     ('fallback-script', 'fallbackScript', '', 'script'),
     ('reference', 'referencedParameters', '', ''),
-    ('choice-type', 'choiceType', 'single', ''),
     ('filterable', 'filterable', False, ''),
 ]
 
@@ -93,5 +92,6 @@ def active_choice_parameter(parser, xml_parent, data):
     for name, tag, default, section in OPTIONAL:
         _add_element(sections[section], tag, data.get(name, default))
 
+    _add_element(pdef, 'choiceType', CHOICE_TYPE[data.get('choice-type', 'single')])
     # added calculated fields
     _add_element(pdef, 'randomName', _unique_string(data['project'], data['name']))

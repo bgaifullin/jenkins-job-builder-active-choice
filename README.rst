@@ -13,24 +13,23 @@ Example:
 .. code-block:: yaml
 
     - job:
-        name: 'active-choice-example'
+        name: 'cascade-choice-example'
 
         parameters:
           - string:
               name: STR_PARAM
               default: test
           - active-choice:
-              name: ACTIVE_CHOICE
+              project: 'cascade-choice-example'
+              name: CASCADE_CHOICE
               script: |
                 return ['foo:selected', 'bar']
-              description: "A parameter named ACTIVE_CHOICE which options foo and bar."
+              description: "A parameter named CASCADE_CHOICE which options foo and bar."
               visible-item-count: 1
               fallback-script: |
                 return ['Something Wrong']
               reference: STR_PARAM
-              project: 'active-choice-example'
               choice-type: single
-
 
 
 .. _`Active Choice Plugin`: https://wiki.jenkins-ci.org/display/JENKINS/Active+Choices+Plugin

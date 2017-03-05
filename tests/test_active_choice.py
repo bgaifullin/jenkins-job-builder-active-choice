@@ -55,6 +55,4 @@ scenarios = get_scenarios()
 def test_scenario(scenario):
     actual = generate_xml(scenario.test_input)
     expected = load_xml(scenario.expected)
-    print(actual)
-    print(expected)
     assert actual == expected, "check result xml"

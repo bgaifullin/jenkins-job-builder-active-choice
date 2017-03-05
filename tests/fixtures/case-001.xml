@@ -22,16 +22,16 @@
             <fallbackScript>return ['Something Wrong']
 </fallbackScript>
           </script>
-          <name>ACTIVE_CHOICE</name>
-          <projectName>active-choice-example-01</projectName>
-          <description>A parameter named ACTIVE_CHOICE which options foo and bar.</description>
+          <parameters class="linked-hash-map"/>
+          <name>CASCADE_CHOICE</name>
+          <projectName>cascade-choice-example-01</projectName>
+          <description>A parameter named CASCADE_CHOICE which options foo and bar.</description>
           <visibleItemCount>1</visibleItemCount>
           <referencedParameters>STR_PARAM</referencedParameters>
           <filterable>false</filterable>
           <choiceType>PT_SINGLE_SELECT</choiceType>
-          <randomName>param-name-active-choice-example-01-active_choice</randomName>
+          <randomName>choice-param-cascade-choice-example-01-cascade_choice</randomName>
         </org.biouno.unochoice.CascadeChoiceParameter>
-        <parameters class="linked-hash-map"/>
       </parameterDefinitions>
     </hudson.model.ParametersDefinitionProperty>
   </properties>

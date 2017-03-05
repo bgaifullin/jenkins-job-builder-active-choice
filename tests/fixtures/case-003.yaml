@@ -1,16 +1,16 @@
 - job:
-    name: 'active-choice-example-03'
+    name: 'cascade-choice-example-03'
 
     parameters:
       - string:
           name: STR_PARAM
           default: test
-      - active-choice:
-          name: ACTIVE_CHOICE
-          project: 'active-choice-example-03'
+      - cascade-choice:
+          name: CASCADE_CHOICE
+          project: 'cascade-choice-example-03'
           script: |
             return ['foo', 'bar']
-          description: "A parameter named ACTIVE_CHOICE which options foo and bar."
+          description: "A parameter named CASCADE_CHOICE which options foo and bar."
           visible-item-count: 2
           fallback-script: |
             return ['Something Wrong']

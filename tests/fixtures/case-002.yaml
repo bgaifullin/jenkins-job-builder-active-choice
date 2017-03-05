@@ -1,9 +1,9 @@
 - job:
-    name: 'active-choice-example-02'
+    name: 'cascade-choice-example-02'
 
     parameters:
-      - active-choice:
-          name: ACTIVE_CHOICE
-          project: 'active-choice-example-02'
+      - cascade-choice:
+          name: CASCADE_CHOICE
+          project: 'cascade-choice-example-02'
           script: |
             return ['foo', 'bar']

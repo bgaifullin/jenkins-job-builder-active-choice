@@ -39,7 +39,7 @@ OPTIONAL = [
 
 
 def _to_str(x):
-    if not isinstance(x, str):
+    if not isinstance(x, (str, unicode)):
         return str(x).lower()
     return x
 
@@ -49,11 +49,11 @@ def _add_element(xml_parent, tag, value):
 
 
 def _unique_string(project, name):
-    return 'param-name-{0}-{1}'.format(project, name).lower()
+    return 'choice-param-{0}-{1}'.format(project, name).lower()
 
 
-def active_choice_parameter(parser, xml_parent, data):
-    """yaml: active-choice
+def cascade_choice_parameter(parser, xml_parent, data):
+    """yaml: cascade-choice
     Creates an active choice parameter
     Requires the Jenkins :jenkins-wiki:`Active Choices Plugin <Active+Choices+Plugin>`.
 
@@ -69,8 +69,8 @@ def active_choice_parameter(parser, xml_parent, data):
 
     .. code-block:: yaml
 
-        - active-choice:
-          name: ACTIVE_CHOICE
+        - cascade-choice:
+          name: CASCADE_CHOICE
           project: test_project
           script: |
             return ['foo', 'bar']
@@ -80,7 +80,7 @@ def active_choice_parameter(parser, xml_parent, data):
 
     pdef = Xml.SubElement(xml_parent, element_name)
     script_section = Xml.SubElement(pdef, 'script', {'class': 'org.biouno.unochoice.model.GroovyScript'})
-    Xml.SubElement(xml_parent, 'parameters', {'class': 'linked-hash-map'})
+    Xml.SubElement(pdef, 'parameters', {'class': 'linked-hash-map'})
     sections = {'': pdef, 'script': script_section}
 
     for name, tag, section in REQUIRED:

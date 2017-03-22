@@ -17,10 +17,16 @@
         </hudson.model.StringParameterDefinition>
         <org.biouno.unochoice.CascadeChoiceParameter>
           <script class="org.biouno.unochoice.model.GroovyScript">
-            <script>return ['foo', 'bar']
+            <secureScript>
+              <script>return ['foo', 'bar']
 </script>
-            <fallbackScript>return ['Something Wrong']
-</fallbackScript>
+              <sandbox>false</sandbox>
+            </secureScript>
+            <secureFallbackScript>
+              <script>return ['Something Wrong']
+</script>
+              <sandbox>false</sandbox>
+            </secureFallbackScript>
           </script>
           <parameters class="linked-hash-map"/>
           <name>CASCADE_CHOICE</name>

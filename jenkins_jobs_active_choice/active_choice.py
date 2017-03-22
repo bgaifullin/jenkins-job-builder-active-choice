@@ -22,19 +22,17 @@ CHOICE_TYPE = {
 }
 
 REQUIRED = [
-    # (yaml tag, xml tag)
-    ('name', 'name', ''),
-    ('script', 'script', 'script'),
-    ('project', 'projectName', ''),
+    # (yaml tag)
+    ('name', 'name'),
+    ('project', 'projectName'),
 ]
 
 OPTIONAL = [
     # ( yaml tag, xml tag, default value )
-    ('description', 'description', '', ''),
-    ('visible-item-count', 'visibleItemCount', 1, ''),
-    ('fallback-script', 'fallbackScript', '', 'script'),
-    ('reference', 'referencedParameters', '', ''),
-    ('filterable', 'filterable', False, ''),
+    ('description', 'description', ''),
+    ('visible-item-count', 'visibleItemCount', 1),
+    ('reference', 'referencedParameters', ''),
+    ('filterable', 'filterable', False),
 ]
 
 
@@ -46,6 +44,12 @@ def _to_str(x):
 
 def _add_element(xml_parent, tag, value):
     Xml.SubElement(xml_parent, tag).text = _to_str(value)
+
+
+def _add_script(xml_parent, tag, value):
+    section = Xml.SubElement(xml_parent, tag)
+    Xml.SubElement(section, "script").text = value
+    Xml.SubElement(section, "sandbox").text = "false"
 
 
 def _unique_string(project, name):
@@ -78,20 +82,26 @@ def cascade_choice_parameter(parser, xml_parent, data):
 
     element_name = 'org.biouno.unochoice.CascadeChoiceParameter'
 
-    pdef = Xml.SubElement(xml_parent, element_name)
-    script_section = Xml.SubElement(pdef, 'script', {'class': 'org.biouno.unochoice.model.GroovyScript'})
-    Xml.SubElement(pdef, 'parameters', {'class': 'linked-hash-map'})
-    sections = {'': pdef, 'script': script_section}
+    section = Xml.SubElement(xml_parent, element_name)
+    scripts = Xml.SubElement(section, 'script', {'class': 'org.biouno.unochoice.model.GroovyScript'})
+    Xml.SubElement(section, 'parameters', {'class': 'linked-hash-map'})
 
-    for name, tag, section in REQUIRED:
+    for name, tag in REQUIRED:
         try:
-            _add_element(sections[section], tag, data[name])
+            _add_element(section, tag, data[name])
         except KeyError:
             raise Exception("missing mandatory argument %s" % name)
 
-    for name, tag, default, section in OPTIONAL:
-        _add_element(sections[section], tag, data.get(name, default))
+    for name, tag, default in OPTIONAL:
+        _add_element(section, tag, data.get(name, default))
 
-    _add_element(pdef, 'choiceType', CHOICE_TYPE[data.get('choice-type', 'single')])
+    try:
+        _add_script(scripts, "secureScript", data["script"])
+    except KeyError:
+        raise Exception("missing mandatory argument script")
+
+    _add_script(scripts, "secureFallbackScript", data.get("fallback-script", ""))
+
+    _add_element(section, 'choiceType', CHOICE_TYPE[data.get('choice-type', 'single')])
     # added calculated fields
-    _add_element(pdef, 'randomName', _unique_string(data['project'], data['name']))
+    _add_element(section, 'randomName', _unique_string(data['project'], data['name']))

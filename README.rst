@@ -19,7 +19,7 @@ Example:
           - string:
               name: STR_PARAM
               default: test
-          - active-choice:
+          - cascade-choice:
               project: 'cascade-choice-example'
               name: CASCADE_CHOICE
               script: |

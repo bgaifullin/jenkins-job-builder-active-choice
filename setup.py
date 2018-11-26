@@ -13,7 +13,8 @@ setup(
     entry_points={
         'jenkins_jobs.parameters': [
             'cascade-choice = jenkins_jobs_active_choice.active_choice:cascade_choice_parameter',
-            'active-choice = jenkins_jobs_active_choice.active_choice:cascade_choice_parameter']},
+            'active-choice = jenkins_jobs_active_choice.active_choice:cascade_choice_parameter',
+            'dynamic-reference = jenkins_jobs_active_choice.active_choice:dynamic_reference_parameter']},
     packages=['jenkins_jobs_active_choice'],
     classifiers=[
         'Environment :: Console',

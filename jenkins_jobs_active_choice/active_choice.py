@@ -12,6 +12,9 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import xml.etree.ElementTree as Xml
+# use logging from JJB
+import logging
+
 
 # these are common tags for both cascade-choice and dynamic-reference
 SCRIPT_OPTIONAL = [
@@ -26,9 +29,6 @@ FALLBACK_OPTIONAL = [
     ('fallback-classpath', 'classpath', 'False'),
 ]
 
-
-# use logging from JJB
-import logging
 
 def _to_str(x):
     if not isinstance(x, (str, unicode)):
@@ -49,10 +49,12 @@ def _add_script(xml_parent, tag, value):
 def _unique_string(project, name):
     return 'choice-param-{0}-{1}'.format(project, name).lower()
 
-def _add_script_option (xml_parent, tag, value):
+
+def _add_script_option(xml_parent, tag, value):
     section = Xml.SubElement(xml_parent, tag)
     Xml.SubElement(section, "script").text = value
     Xml.SubElement(section, "sandbox").text = "false"
+
 
 def cascade_choice_parameter(parser, xml_parent, data):
     """yaml: cascade-choice
@@ -125,7 +127,7 @@ def cascade_choice_parameter(parser, xml_parent, data):
     # added calculated fields
     logging.debug('cascade_choice data: %s' % data['project'])
     _add_element(section, 'randomName', _unique_string(data['project'], data['name']))
-    
+
 
 def dynamic_reference_parameter(parser, xml_parent, data):
     """yaml: dynamic-reference
@@ -137,8 +139,11 @@ def dynamic_reference_parameter(parser, xml_parent, data):
     arg: str fallback-script: a groovy script which will be evaluated if main script fails (optional)
     :arg str description: a description of the parameter (optional)
     arg: str reference: the name(s) of parameter(s) on changing that the parameter will be re-evaluated
-    arg: str choice-type: a choice type, can be on of input-text, numbered-list, bullet-list, formatted-html, formatted-hidden-html
-    arg: bool omit-value: By default Dynamic Reference Parameters always include a hidden input for the value. If your script creates an input HTML element, you can check this option and the value input field will be omitted.
+    arg: str choice-type: a choice type, can be on of input-text, numbered-list, bullet-list, formatted-html,
+         formatted-hidden-html
+    arg: bool omit-value: By default Dynamic Reference Parameters always include a hidden input for the value.
+         If your script creates an input HTML element, you can check this option and the value input field
+         will be omitted.
     Example::
 
     .. code-block:: yaml
@@ -196,5 +201,4 @@ def dynamic_reference_parameter(parser, xml_parent, data):
     _add_element(section, 'choiceType', CHOICE_TYPE[data.get('choice-type', 'input-text')])
     # added calculated fields
     _add_element(section, 'randomName', _unique_string(data['project'], data['name']))
-    
 

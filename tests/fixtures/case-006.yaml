@@ -1,0 +1,17 @@
+- job:
+    name: 'dynamic-reference-example-06'
+
+    parameters:
+      - string:
+          name: STR_PARAM
+          default: test
+      - dynamic-reference:
+          name: DYNAMIC_REF
+          project: 'dynamic-reference-example-06'
+          script: |
+            return ['foo:selected', 'bar']
+          description: "A parameter named DYNAMIC_REF with options foo and bar."
+          fallback-script: |
+            return ['Something Wrong']
+          reference: STR_PARAM
+          choice-type: input-text

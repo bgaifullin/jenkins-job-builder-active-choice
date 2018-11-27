@@ -201,4 +201,3 @@ def dynamic_reference_parameter(parser, xml_parent, data):
     _add_element(section, 'choiceType', CHOICE_TYPE[data.get('choice-type', 'input-text')])
     # added calculated fields
     _add_element(section, 'randomName', _unique_string(data['project'], data['name']))
-

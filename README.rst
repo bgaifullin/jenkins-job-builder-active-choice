@@ -30,6 +30,17 @@ Example:
                 return ['Something Wrong']
               reference: STR_PARAM
               choice-type: single
+          - dynamic-reference:
+              name: DYNAMIC_REF
+              project: 'dynamic-reference-example-04'
+              script: |
+                return ['foo', 'bar']
+              description: "A parameter named DYNAMIC_REF with options foo and bar."
+              fallback-script: |
+                return ['Something Wrong']
+              reference: STR_PARAM
+              omit-value: false
+              choice-type: bullet-list
 
 
 .. _`Active Choice Plugin`: https://wiki.jenkins-ci.org/display/JENKINS/Active+Choices+Plugin

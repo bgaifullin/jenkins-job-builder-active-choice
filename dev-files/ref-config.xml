@@ -1,0 +1,171 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <keepDependencies>false</keepDependencies>
+  <properties>
+    <com.sonyericsson.rebuild.RebuildSettings plugin="rebuild@1.29">
+      <autoRebuild>false</autoRebuild>
+      <rebuildDisabled>false</rebuildDisabled>
+    </com.sonyericsson.rebuild.RebuildSettings>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>STRING_REFERENCE</name>
+          <description>enter a string</description>
+          <defaultValue>string-value</defaultValue>
+          <trim>false</trim>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>CHOICE_01</name>
+          <description>make a decision</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>choice1</string>
+              <string>choice2</string>
+              <string>choice3</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <org.biouno.unochoice.ChoiceParameter plugin="uno-choice@2.1">
+          <name>ACTIVE_CHOICE_01</name>
+          <description>asdfsdfj lkajsfdlk</description>
+          <randomName>choice-parameter-8211497161494630</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.GroovyScript">
+            <secureScript plugin="script-security@1.48">
+              <script>return [
+&apos;choice1&apos;,
+&apos;choice2&apos;
+]</script>
+              <sandbox>false</sandbox>
+            </secureScript>
+            <secureFallbackScript plugin="script-security@1.48">
+              <script>return [&apos;error&apos;]</script>
+              <sandbox>false</sandbox>
+            </secureFallbackScript>
+          </script>
+          <projectName>_WIP_allen_dev</projectName>
+          <choiceType>PT_SINGLE_SELECT</choiceType>
+          <filterable>true</filterable>
+          <filterLength>1</filterLength>
+        </org.biouno.unochoice.ChoiceParameter>
+        <org.biouno.unochoice.ChoiceParameter plugin="uno-choice@2.1">
+          <name>ACTIVE_CHOICE_02</name>
+          <description>asfsdfsdfds</description>
+          <randomName>choice-parameter-8211497163550320</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.ScriptlerScript">
+            <parameters class="linked-hash-map"/>
+          </script>
+          <projectName>_WIP_allen_dev</projectName>
+          <choiceType>PT_RADIO</choiceType>
+          <filterable>true</filterable>
+          <filterLength>1</filterLength>
+        </org.biouno.unochoice.ChoiceParameter>
+        <org.biouno.unochoice.CascadeChoiceParameter plugin="uno-choice@2.1">
+          <name>ACTIVE_CHOICE_REACTIVE_01</name>
+          <description>asfdsfsdfsdfsd</description>
+          <randomName>choice-parameter-8211497165584010</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.GroovyScript">
+            <secureScript plugin="script-security@1.48">
+              <script>return [
+&apos;choice1&apos;,
+&apos;choice2&apos;
+]</script>
+              <sandbox>false</sandbox>
+            </secureScript>
+            <secureFallbackScript plugin="script-security@1.48">
+              <script>return [&apos;error&apos;]</script>
+              <sandbox>false</sandbox>
+            </secureFallbackScript>
+          </script>
+          <projectName>_WIP_allen_dev</projectName>
+          <parameters class="linked-hash-map"/>
+          <referencedParameters>STRING_REFERENCE,CHOICE_01</referencedParameters>
+          <choiceType>PT_MULTI_SELECT</choiceType>
+          <filterable>false</filterable>
+          <filterLength>1</filterLength>
+        </org.biouno.unochoice.CascadeChoiceParameter>
+        <org.biouno.unochoice.DynamicReferenceParameter plugin="uno-choice@2.1">
+          <name>ACTIVE_CHOICES_REACTIVE_REF</name>
+          <description></description>
+          <randomName>choice-parameter-8211497167634601</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.GroovyScript">
+            <secureScript plugin="script-security@1.48">
+              <script>return [
+&apos;choice1&apos;,
+&apos;choice2&apos;
+]</script>
+              <sandbox>false</sandbox>
+            </secureScript>
+            <secureFallbackScript plugin="script-security@1.48">
+              <script>return [&apos;error&apos;]</script>
+              <sandbox>false</sandbox>
+            </secureFallbackScript>
+          </script>
+          <projectName>_WIP_allen_dev</projectName>
+          <parameters class="linked-hash-map"/>
+          <referencedParameters>STRING_REFERENCE,CHOICE_01</referencedParameters>
+          <choiceType>ET_ORDERED_LIST</choiceType>
+          <omitValueField>true</omitValueField>
+        </org.biouno.unochoice.DynamicReferenceParameter>
+        <org.biouno.unochoice.CascadeChoiceParameter plugin="uno-choice@2.1">
+          <name>SCRIPTLER_01</name>
+          <description>testing scriptler with parameters</description>
+          <randomName>choice-parameter-8217693238970276</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.ScriptlerScript">
+            <scriptlerScriptId>print-path.groovy</scriptlerScriptId>
+            <parameters class="linked-hash-map">
+              <entry>
+                <string>HELPME</string>
+                <string>lkajklsf</string>
+              </entry>
+              <entry>
+                <string>P2</string>
+                <string>aklsfdjlksd</string>
+              </entry>
+            </parameters>
+          </script>
+          <projectName>_WIP_allen_dev</projectName>
+          <parameters class="linked-hash-map"/>
+          <referencedParameters></referencedParameters>
+          <choiceType>PT_SINGLE_SELECT</choiceType>
+          <filterable>false</filterable>
+          <filterLength>1</filterLength>
+        </org.biouno.unochoice.CascadeChoiceParameter>
+        <org.biouno.unochoice.CascadeChoiceParameter plugin="uno-choice@2.1">
+          <name>SCRIPTLER_02</name>
+          <description>testing scriptler no parameters</description>
+          <randomName>choice-parameter-8217820280760511</randomName>
+          <visibleItemCount>1</visibleItemCount>
+          <script class="org.biouno.unochoice.model.ScriptlerScript">
+            <scriptlerScriptId>print-path.groovy</scriptlerScriptId>
+            <parameters class="linked-hash-map"/>
+          </script>
+          <projectName>_WIP_allen_dev</projectName>
+          <parameters class="linked-hash-map"/>
+          <referencedParameters></referencedParameters>
+          <choiceType>PT_SINGLE_SELECT</choiceType>
+          <filterable>false</filterable>
+          <filterLength>1</filterLength>
+        </org.biouno.unochoice.CascadeChoiceParameter>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(System)</jdk>
+  <triggers/>
+  <concurrentBuild>false</concurrentBuild>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
+</project>
+

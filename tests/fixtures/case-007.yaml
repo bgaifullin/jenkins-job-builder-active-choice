@@ -1,0 +1,35 @@
+  - job:
+      name: 'TEST-jjb-active-choice'
+
+      parameters:
+          - string:
+              name: STR_PARAM
+              default: test
+
+          - choice:
+              name: CHOICE_PARAM
+              choices:
+                - choice_01
+                - choice_02
+                - choice_03
+                - choice_04
+              description: |
+                Just a test parameter for used by references
+
+          - active-choice:
+              project: 'active-choice-example'
+              name: ACTIVE_CHOICE_01
+              description: "A parameter named ACTIVE_CHOICE_01 with options foo and bar."
+              groovy:
+                  script: |
+                      return ['foo:selected', 'bar']
+                  classpath: file:/tmp/aklsdjfkl.jar
+                  sandbox: false        
+              fallback:
+                  script: |
+                      return ['Error']
+              visible-item-count: 1
+              choice-type: single
+              filterable:  true
+              filter-length: 3
+

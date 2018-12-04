@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+  <actions/>
+  <description>&lt;!-- Managed by Jenkins Job Builder --&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <concurrentBuild>false</concurrentBuild>
+  <canRoam>true</canRoam>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>STR_PARAM</name>
+          <description/>
+          <defaultValue>test</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>CHOICE_PARAM</name>
+          <description>Just a test parameter for used by references
+</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>choice_01</string>
+              <string>choice_02</string>
+              <string>choice_03</string>
+              <string>choice_04</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <org.biouno.unochoice.CascadeChoiceParameter>
+          <name>ACTIVE_CHOICE_REACTIVE_01</name>
+          <projectName>active-choice-example</projectName>
+          <description>A parameter named ACTIVE_CHOICE_REACTIVE_01 with options foo and bar.</description>
+          <visibleItemCount>10</visibleItemCount>
+          <referencedParameters>STR_PARAM,CHOICE_PARAM</referencedParameters>
+          <filterable>false</filterable>
+          <filterLength>1</filterLength>
+          <script class="org.biouno.unochoice.model.GroovyScript">
+            <secureScript>
+              <script>return ['foo:selected', 'bar']
+</script>
+              <sandbox>false</sandbox>
+              <classpath>
+                <entry>file:/tmp/aklsdjfkl.jar</entry>
+              </classpath>
+            </secureScript>
+            <secureFallbackScript>
+              <script>return ['Error']
+</script>
+              <sandbox>true</sandbox>
+              <classpath>
+                <entry>file:/tmp/aklsdjfkl.jar</entry>
+                <entry>https://lakjsdfklsdjklf/lkajsdflk.jar</entry>
+              </classpath>
+            </secureFallbackScript>
+          </script>
+          <choiceType>PT_MULTI_SELECT</choiceType>
+          <parameters class="linked-hash-map"/>
+          <randomName>choice-param-active-choice-example-active_choice_reactive_01</randomName>
+        </org.biouno.unochoice.CascadeChoiceParameter>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
+</project>

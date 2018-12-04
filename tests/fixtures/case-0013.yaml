@@ -1,0 +1,33 @@
+  - job:
+      name: 'TEST-jjb-active-choice'
+
+      parameters:
+          - string:
+              name: STR_PARAM
+              default: test
+
+          - choice:
+              name: CHOICE_PARAM
+              choices:
+                - choice_01
+                - choice_02
+                - choice_03
+                - choice_04
+              description: |
+                Just a test parameter for used by references
+
+          - active-choice-reactive:
+              project: 'active-choice-example'
+              name: ACTIVE_CHOICE_REACTIVE_02
+              description: "A parameter named ACTIVE_CHOICE_REACTIVE_02 with options foo and bar."
+              groovy:
+                  script: |
+                      return ['foo:selected', 'bar']
+                  classpath: file:/your-path/your-classes.jar
+                  sandbox: true    
+              reference: STR_PARAM,ACTIVE_CHOICE_01
+              visible-item-count: 10
+              choice-type: radio
+              filterable:  true
+              filter-length:  10
+

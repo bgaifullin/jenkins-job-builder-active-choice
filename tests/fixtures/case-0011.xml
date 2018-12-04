@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project>
+  <actions/>
+  <description>&lt;!-- Managed by Jenkins Job Builder --&gt;</description>
+  <keepDependencies>false</keepDependencies>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <concurrentBuild>false</concurrentBuild>
+  <canRoam>true</canRoam>
+  <properties>
+    <hudson.model.ParametersDefinitionProperty>
+      <parameterDefinitions>
+        <hudson.model.StringParameterDefinition>
+          <name>STR_PARAM</name>
+          <description/>
+          <defaultValue>test</defaultValue>
+        </hudson.model.StringParameterDefinition>
+        <hudson.model.ChoiceParameterDefinition>
+          <name>CHOICE_PARAM</name>
+          <description>Just a test parameter for used by references
+</description>
+          <choices class="java.util.Arrays$ArrayList">
+            <a class="string-array">
+              <string>choice_01</string>
+              <string>choice_02</string>
+              <string>choice_03</string>
+              <string>choice_04</string>
+            </a>
+          </choices>
+        </hudson.model.ChoiceParameterDefinition>
+        <org.biouno.unochoice.ChoiceParameter>
+          <name>ACTIVE_CHOICE_05</name>
+          <projectName>active-choice-example</projectName>
+          <description>A parameter named ACTIVE_CHOICE_05 with options foo and bar.</description>
+          <visibleItemCount>1</visibleItemCount>
+          <filterable>false</filterable>
+          <filterLength>1</filterLength>
+          <script class="org.biouno.unochoice.model.ScriptlerScript">
+            <scriptlerScriptId>print-path</scriptlerScriptId>
+            <parameters class="linked-hash-map">
+              <entry>
+                <string>PARAM1</string>
+                <string>value1 alksdjflksdf lkasjflk</string>
+              </entry>
+              <entry>
+                <string>PARAM2</string>
+                <string>value2</string>
+              </entry>
+            </parameters>
+          </script>
+          <choiceType>PT_CHECKBOX</choiceType>
+          <parameters class="linked-hash-map"/>
+          <randomName>choice-param-active-choice-example-active_choice_05</randomName>
+        </org.biouno.unochoice.ChoiceParameter>
+      </parameterDefinitions>
+    </hudson.model.ParametersDefinitionProperty>
+  </properties>
+  <scm class="hudson.scm.NullSCM"/>
+  <builders/>
+  <publishers/>
+  <buildWrappers/>
+</project>

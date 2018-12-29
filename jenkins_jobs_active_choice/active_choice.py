@@ -273,10 +273,8 @@ def dynamic_reference_parameter(parser, xml_parent, data):
     _add_element(section, 'randomName', _unique_string(data['project'], data['name']))
 
 
-def common_steps(xml_parent, element_name, REQUIRED, OPTIONAL, CHOICE_TYPE, data):
-    param_name = data.get('name')
-    if not param_name:
-        raise Exception("Missing parameter name (ie, name keyword followed by parameter name)")
+def _common_steps(xml_parent, element_name, REQUIRED, OPTIONAL, CHOICE_TYPE, data):
+    logging.debug('_common_steps data: data = %s' % data)
 
     section = Xml.SubElement(xml_parent, element_name)
 
@@ -285,6 +283,11 @@ def common_steps(xml_parent, element_name, REQUIRED, OPTIONAL, CHOICE_TYPE, data
             _add_element(section, tag, data[name])
         except KeyError:
             raise Exception("missing mandatory argument %s" % name)
+
+    param_name = data.get('name')
+    logging.debug('_common_steps data: param_name = %s' % param_name)
+    project = data.get('project')
+    logging.debug('_common_steps data: project = %s' % project)
 
     for name, tag, default in OPTIONAL:
         _add_element(section, tag, data.get(name, default))
@@ -319,7 +322,7 @@ def common_steps(xml_parent, element_name, REQUIRED, OPTIONAL, CHOICE_TYPE, data
     Xml.SubElement(section, 'parameters', {'class': 'linked-hash-map'})
 
     # add calculated fields
-    _add_element(section, 'randomName', _unique_string(data['project'], param_name))
+    _add_element(section, 'randomName', _unique_string(project, param_name))
 
 
 def active_choice(parser, xml_parent, data):
@@ -409,7 +412,8 @@ def active_choice(parser, xml_parent, data):
     ]
 
     element_name = 'org.biouno.unochoice.ChoiceParameter'
-    common_steps(xml_parent, element_name, REQUIRED, OPTIONAL, CHOICE_TYPE, data)
+    logging.debug('active_choice data: data = %s' % data)
+    _common_steps(xml_parent, element_name, REQUIRED, OPTIONAL, CHOICE_TYPE, data)
 
 
 def active_choice_reactive(parser, xml_parent, data):
@@ -504,7 +508,8 @@ def active_choice_reactive(parser, xml_parent, data):
     ]
 
     element_name = 'org.biouno.unochoice.CascadeChoiceParameter'
-    common_steps(xml_parent, element_name, REQUIRED, OPTIONAL, CHOICE_TYPE, data)
+    logging.debug('active_choice_reactive data: data = %s' % data)
+    _common_steps(xml_parent, element_name, REQUIRED, OPTIONAL, CHOICE_TYPE, data)
 
 
 def active_choice_reactive_reference(parser, xml_parent, data):
@@ -600,4 +605,5 @@ def active_choice_reactive_reference(parser, xml_parent, data):
     ]
 
     element_name = 'org.biouno.unochoice.DynamicReferenceParameter'
-    common_steps(xml_parent, element_name, REQUIRED, OPTIONAL, CHOICE_TYPE, data)
+    logging.debug('active_choice_reactive_reference data: data = %s' % data)
+    _common_steps(xml_parent, element_name, REQUIRED, OPTIONAL, CHOICE_TYPE, data)

@@ -12,7 +12,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 import xml.etree.ElementTree as Xml
-
+import sys
 
 CHOICE_TYPE = {
     'single': 'PT_SINGLE_SELECT',
@@ -37,8 +37,12 @@ OPTIONAL = [
 
 
 def _to_str(x):
-    if not isinstance(x, (str, unicode)):
-        return str(x).lower()
+    if (sys.version_info > (3, 0)):
+        if not isinstance(x, (str, str)):
+            return str(x).lower()
+    else:
+        if not isinstance(x, (str, unicode)):
+            return str(x).lower()
     return x
 
 

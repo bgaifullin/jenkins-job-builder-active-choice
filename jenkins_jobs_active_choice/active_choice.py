@@ -16,6 +16,7 @@ import logging
 
 import xml.etree.ElementTree as Xml
 import re
+import sys
 
 
 # XXXXXX still here for backwards compatibility
@@ -35,8 +36,12 @@ FALLBACK_OPTIONAL = [
 
 
 def _to_str(x):
-    if not isinstance(x, (str, unicode)):
-        return str(x).lower()
+    if (sys.version_info > (3, 0)):
+        if not isinstance(x, (str, str)):
+            return str(x).lower()
+    else:
+        if not isinstance(x, (str, unicode)):
+            return str(x).lower()
     return x
 
 

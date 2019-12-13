@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='jenkins-job-builder-active-choice',
-    version='0.0.1',
+    version='0.0.5',
     description='Jenkins Job Builder Active Choice Parameter builder',
     url='https://github.com/bgaifullin/jenkins-job-builder-active-choice',
     author='Bulat Gaifullin',

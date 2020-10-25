@@ -12,12 +12,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 # use system logging
-import logging
-
 import xml.etree.ElementTree as Xml
 import re
 import sys
-
+import logging
 
 # XXXXXX still here for backwards compatibility
 # these are common tags for both cascade-choice and dynamic-reference

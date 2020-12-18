@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name='jenkins-job-builder-active-choice',
-    version='0.0.1',
+    version='0.0.5',
     description='Jenkins Job Builder Active Choice Parameter builder',
     url='https://github.com/bgaifullin/jenkins-job-builder-active-choice',
     author='Bulat Gaifullin',
@@ -13,7 +13,11 @@ setup(
     entry_points={
         'jenkins_jobs.parameters': [
             'cascade-choice = jenkins_jobs_active_choice.active_choice:cascade_choice_parameter',
-            'active-choice = jenkins_jobs_active_choice.active_choice:cascade_choice_parameter']},
+            'dynamic-reference = jenkins_jobs_active_choice.active_choice:dynamic_reference_parameter',
+            'active-choice = jenkins_jobs_active_choice.active_choice:active_choice',
+            'active-choice-reactive = jenkins_jobs_active_choice.active_choice:active_choice_reactive',
+            'active-choice-reactive-reference = '
+            'jenkins_jobs_active_choice.active_choice:active_choice_reactive_reference']},
     packages=['jenkins_jobs_active_choice'],
     classifiers=[
         'Environment :: Console',

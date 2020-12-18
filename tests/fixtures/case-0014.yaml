@@ -1,0 +1,33 @@
+  - job:
+      name: 'TEST-jjb-active-choice'
+
+      parameters:
+          - string:
+              name: STR_PARAM
+              default: test
+
+          - choice:
+              name: CHOICE_PARAM
+              choices:
+                - choice_01
+                - choice_02
+                - choice_03
+                - choice_04
+              description: |
+                Just a test parameter for used by references
+
+          - active-choice-reactive:
+              project: 'active-choice-example'
+              name: ACTIVE_CHOICE_REACTIVE_03
+              description: "A parameter named ACTIVE_CHOICE_REACTIVE_03 with options foo and bar."
+              scriptler:
+                  script: print-path
+                  parameters:
+                      - PARAM1:  value1 aklfsdj kalsjflk
+                      - PARAM2:  value2
+              reference: STR_PARAM
+              visible-item-count: 10
+              choice-type: checkbox
+              filterable:  true
+              filter-length: 4
+

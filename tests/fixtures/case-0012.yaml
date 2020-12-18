@@ -1,0 +1,35 @@
+  - job:
+      name: 'TEST-jjb-active-choice'
+
+      parameters:
+          - string:
+              name: STR_PARAM
+              default: test
+
+          - choice:
+              name: CHOICE_PARAM
+              choices:
+                - choice_01
+                - choice_02
+                - choice_03
+                - choice_04
+              description: |
+                Just a test parameter for used by references
+
+          - active-choice-reactive:
+              project: 'active-choice-example'
+              name: ACTIVE_CHOICE_REACTIVE_01
+              description: "A parameter named ACTIVE_CHOICE_REACTIVE_01 with options foo and bar."
+              groovy:
+                  script: |
+                      return ['foo:selected', 'bar']
+                  classpath: file:/tmp/aklsdjfkl.jar
+              fallback:
+                  script: |
+                      return ['Error']
+                  classpath: file:/tmp/aklsdjfkl.jar,https://lakjsdfklsdjklf/lkajsdflk.jar
+                  sandbox: true    
+              visible-item-count: 10
+              reference: STR_PARAM,CHOICE_PARAM
+              choice-type: multi
+

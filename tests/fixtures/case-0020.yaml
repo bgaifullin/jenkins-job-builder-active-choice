@@ -1,0 +1,58 @@
+  - job:
+      name: 'TEST-jjb-active-choice'
+
+      parameters:
+          - string:
+              name: STR_PARAM
+              default: test
+
+          - choice:
+              name: CHOICE_PARAM
+              choices:
+                - choice_01
+                - choice_02
+                - choice_03
+                - choice_04
+              description: |
+                Just a test parameter for used by references
+
+          - active-choice-reactive-reference:
+              name: ACTIVE_CHOICE_REACTIVE_REF_05
+              project: 'active-choice-example'
+              description: "A parameter named ACTIVE_CHOICE_REACTIVE_REF_05 with options foo and bar."
+              groovy:
+                  script: |
+                      return ['foo:selected', 'bar']
+                  sandbox: true    
+              fallback:
+                  script: |
+                      return ['Error']
+                  classpath: file:/tmp/aklsdjfkl.jar,http://lakjsdfklsdjklf/lkajsdflk.jar
+              reference: STR_PARAM
+              omit-value: false
+              choice-type: formatted-hidden-html
+
+          - active-choice-reactive-reference:
+              project: 'active-choice-example'
+              name: ACTIVE_CHOICE_REACTIVE_REF_06
+              description: "A parameter named ACTIVE_CHOICE_REACTIVE_REF_06 with options foo and bar."
+              scriptler:
+                  script: print-path
+                  parameters:
+                      - PARAM1: value1
+              reference: STR_PARAM
+              visible-item-count: 10
+              choice-type: input-text 
+
+          - active-choice-reactive-reference:
+              project: 'active-choice-example'
+              name: ACTIVE_CHOICE_REACTIVE_REF_07
+              description: "A parameter named ACTIVE_CHOICE_REACTIVE_REF_07 with options foo and bar."
+              scriptler:
+                  script: print-path
+              reference: STR_PARAM,CHOICE_PARAM
+              visible-item-count: 10
+              choice-type: input-text 
+              filterable:  true
+              filter-length: 8
+

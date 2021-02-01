@@ -12,38 +12,6 @@ Example:
 
 .. code-block:: yaml
 
-    # OLD: partial support of Active Choice Plug-in capabilities
-    # deprecated -- see below
-    - job:
-        name: 'cascade-choice-example'
-
-        parameters:
-          - string:
-              name: STR_PARAM
-              default: test
-          - cascade-choice:
-              project: 'cascade-choice-example'
-              name: CASCADE_CHOICE
-              script: |
-                return ['foo:selected', 'bar']
-              description: "A parameter named CASCADE_CHOICE which options foo and bar."
-              visible-item-count: 1
-              fallback-script: |
-                return ['Something Wrong']
-              reference: STR_PARAM
-              choice-type: single
-          - dynamic-reference:
-              name: DYNAMIC_REF
-              project: 'dynamic-reference-example-04'
-              script: |
-                return ['foo', 'bar']
-              description: "A parameter named DYNAMIC_REF with options foo and bar."
-              fallback-script: |
-                return ['Something Wrong']
-              reference: STR_PARAM
-              omit-value: false
-              choice-type: bullet-list
-
     # NEW: Supports full capabilities of the Active Choice Plug-in
     - job:
         name: 'TEST-jjb-active-choice-full-support'

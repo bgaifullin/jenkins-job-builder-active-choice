@@ -1,9 +1,0 @@
-- job:
-    name: 'dynamic-reference-example-05'
-
-    parameters:
-      - dynamic-reference:
-          name: DYNAMIC_REF
-          project: 'dynamic-reference-example-05'
-          script: |
-            return ['foo', 'bar']

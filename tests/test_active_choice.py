@@ -30,8 +30,8 @@ def get_scenarios():
     fixtures_path = os.path.join(os.path.dirname(__file__), 'fixtures')
     scenarios = []
     for path in glob.iglob(os.path.join(fixtures_path, "*.yaml")):
-            wo_ext = os.path.splitext(path)[0]
-            scenarios.append(Scenario(os.path.basename(wo_ext), path, wo_ext + ".xml"))
+        wo_ext = os.path.splitext(path)[0]
+        scenarios.append(Scenario(os.path.basename(wo_ext), path, wo_ext + ".xml"))
     return scenarios
 
 

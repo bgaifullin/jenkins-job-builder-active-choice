@@ -2,6 +2,7 @@ sudo: false
 language: python
 python:
 - '2.7'
+- '3.7'
 before_install:
 - sed -i "s/0.0.1/${TRAVIS_TAG:-0.0.1}/" setup.py
 install:
@@ -16,4 +17,4 @@ deploy:
   on:
     tags: true
     distributions: sdist bdist_wheel
-    python: '2.7'
+    python: '3.7'
